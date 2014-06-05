@@ -1,25 +1,32 @@
 <?php
 /**
  * @package JPUserRegistrationBlacklist
- * @version 1.3
+ * @version 1.4
  */
 /*
 Plugin Name: JP User Registration Blacklist
 Plugin URI: 
 Description: Apply comment IP and e-mail address blacklist rules to user registrations.  Puts user's IP in user's website field.  Solve a simple math problem to register.
 Author: Justin Parr
-Version: 1.3
+Version: 1.4
 Author URI: http://justinparrtech.com
 */
 
+function JP_seed () {
+	return 302;
+}
 
 // *************** ADD A MATH PROBLEM TO THE USER REG FORM ***************
 add_action('register_form','JP_verifyMath_register_form');
 function JP_verifyMath_register_form (){
+	$a=mt_rand(1,10);
+	$b=mt_rand(1,10);
+	$c=$a+$b+JP_seed();
 	?>
 	<p>
-	<label for="mathproblem">Solve: 6+3<br />
-	<input type="text" name="mathproblem" id="mathproblem" class="input" value="5" size="25" /></label>
+	<label for="mathproblem">Solve: <?php echo("$a+$b "); ?><br />
+	<input type="text" name="mathproblem" id="mathproblem" class="input" value="<?php echo(mt_rand(1,10)); ?>" size="25" /></label>
+	<input type="hidden" name="JPREG" value="<?php echo("$c"); ?>" />
 	</p>
 	<?php
 }
@@ -27,7 +34,7 @@ function JP_verifyMath_register_form (){
 // **************** PREVENT REGISTRATION IF USER FAILS MATH PROBLEM *************
 add_filter('registration_errors', 'JP_verifyMath_registration_errors', 10, 3);
 function JP_verifyMath_registration_errors ($errors, $sanitized_user_login, $user_email) {
-	if ( $_POST['mathproblem']!='9' )
+	if ( $_POST['mathproblem']!=($_POST['JPREG']-JP_seed()) )
 	$errors->add( 'first_name_error', __('You suck at math!  Please try again.','mydomain') );
 	return $errors;
 }
