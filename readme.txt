@@ -14,22 +14,22 @@ Prevent User Registration Spam, and Track New User IP address
 
 ## Features: ##
 
-* Prevent users from registering, if their IP or e-mail address is listed in the “Comments” blacklist (Settings..Discussion)
+* Prevent users from registering, if their IP or e-mail address is listed in the "Comments" blacklist (Settings..Discussion)
 * Ask a simple math question
-* Places user IP address in “Website” field
+* Places user IP address in "Website" field
 
 This is a super-simple user registration spam countermeasure.  I searched for a plugin that was SIMPLE and EFFECTIVE.  I looked at quite a few plugins that promised the desired effect, but were either cumbersome, or included too many unneeded or unwanted features.  Likewise, there are some very simple plugins that are less-than-effective.
 
 
 ## This plugin is VERY simple: ##
 
-If the user’s IP or e-mail address is listed in the “Discussion” comments blacklist, it prevents the user from registering.  This functionality should really be built in to WordPress, so, you’re welcome.
+If the user's IP or e-mail address is listed in the "Discussion" comments blacklist, it prevents the user from registering.  This functionality should really be built in to WordPress, so, you're welcome.
 
-When the user registers, they are presented with a simple (static) math problem.  Eventually, I’ll make this dynamic and random, but think about it this way:  99% of the “user reg spam” is based on bots being able to attack the basic WordPress registration form.  By adding even a simple, static math problem, most bots will fail, removing your site as a target of opportunity.  Criminals go after what’s easy – if you make it slightly more difficult for them, they will go after someone else.
+When the user registers, they are presented with a simple (static) math problem.  Eventually, I'll make this dynamic and random, but think about it this way:  99% of the "user reg spam" is based on bots being able to attack the basic WordPress registration form.  By adding even a simple, static math problem, most bots will fail, removing your site as a target of opportunity.  Criminals go after what's easy - if you make it slightly more difficult for them, they will go after someone else.
 
-Finally, knowing the location from where your users register allows you to more effectively evaluate and block the source.  This plugin adds the user’s IP address (at the time of registration)  to the “Website” field.
+Finally, knowing the location from where your users register allows you to more effectively evaluate and block the source.  This plugin adds the user's IP address (at the time of registration)  to the "Website" field.
 
-Go to http://whois.arin.net to find out who they are.  If you decide to block the IP,  add the IP address, part of the IP address, or e-mail domain to the “Discussion” comments blacklist, and ANY user registrations from an IP address matching that pattern will be blocked.
+Go to http://whois.arin.net to find out who they are.  If you decide to block the IP,  add the IP address, part of the IP address, or e-mail domain to the "Discussion" comments blacklist, and ANY user registrations from an IP address matching that pattern will be blocked.
 
 I HAVE HAD ZERO USER REG SPAM ON MY OWN SITE SINCE INSTALLING THIS PLUGIN.
 
