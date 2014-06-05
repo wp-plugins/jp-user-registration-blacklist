@@ -25,7 +25,7 @@ This is a super-simple user registration spam countermeasure.  I searched for a 
 
 If the user's IP or e-mail address is listed in the "Discussion" comments blacklist, it prevents the user from registering.  This functionality should really be built in to WordPress, so, you're welcome.
 
-When the user registers, they are presented with a simple math problem.  As of plugin version 1.4, the math problem is dynamic!  99% of the "user reg spam" is based on bots being able to attack the basic WordPress registration form.  By adding even a simple math problem, most bots will fail, removing your site as a target of opportunity.  Criminals go after what's easy - if you make it slightly more difficult for them, they will go after someone else.
+When the user registers, they are presented with a simple math problem.  As of plugin version 1.4, the math problem is dynamic!  99% of the "user reg spam" is based on bots being able to attack the basic WordPress registration form.  By adding even a simple math problem, most bots will fail, removing your site as a target of opportunity.  Criminals go after what's easy: if you make it slightly more difficult for them, they will go after someone else.
 
 Finally, knowing the location from where your users register allows you to more effectively evaluate and block the source.  This plugin adds the user's IP address (at the time of registration)  to the "Website" field.
 
