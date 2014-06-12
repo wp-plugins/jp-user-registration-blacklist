@@ -91,8 +91,12 @@ That's a WordPress thing.  Ignore the http://.  I may decide to add a custom fie
 1. This is what the user sees during registration.  Note the math problem in line 3.
 2. This is what the user sees if registration fails.  Note that the red text in the upper-left is NOT displayed
 3. Once successfully registered, the user's IP address appears in the website field.  Note that the red text is NOT displayed.
+4. Admin options screen
 
 == Changelog ==
+
+= 1.5 =
+* 6/12/2014 - Randomly-generated seed for the math problem (prevents hacking), Randomly-generated math problem field name (further prevents bots), Admin options panel, ability to customize error messages.
 
 = 1.4 =
 * 6/5/2014 - Math problem is now randomly generated (dynamic).
@@ -105,12 +109,29 @@ That's a WordPress thing.  Ignore the http://.  I may decide to add a custom fie
 
 == Upgrade Notice ==
 
-= 1.4 =
-Upgrade to get dynamic math problems and e-mail pattern matching
+= 1.5 =
+Upgrade, to get:
+* Randomly-generated seed for the math problem (prevents hacking)
+* Randomly-generated math problem field name (prevents bots and automation)
+* Admin options panel
+* Configurable error messages
 
 == Configuration ==
 
-I have not yet built an admin panel for this yet.  The default settings should be adequate.
+## To Configure the Plugin: ##
+
+NOTE:  NO CONFIGURATION IS REQUIRED.  This plugin is fully-functional using the default values.
+
+In the Plugins page, click "Settings" underneath the "JP User Registration Blacklist" plugin.
+
+* Seed:  This value determines how the answer to the math problem is masked.  Periodically change this, to keep the spammers and criminals at bay.  The initial value is randomly-generated.
+
+* Failed Math Response:  Error message displayed to the user, if they fail to correctly solve the math problem.
+
+* Rejected IP or E-mail:  Error message displayed to the user, if their IP or e-mail is blocked.  Keep this simple and generic, to keep them from knowing why they are being blocked.
+
+* Form field name for math problem:  This field name contains the user's answer to the math problem.  Periodically change this, to keep the bots away.  The initial value is randomly-generated.
+
 
 ## To Block an IP address ##
 1.  In the WordPress Dashboard, go to "Settings...Discuss"

@@ -1,31 +1,45 @@
 <?php
 /**
  * @package JPUserRegistrationBlacklist
- * @version 1.4
+ * @version 1.5.1
  */
 /*
 Plugin Name: JP User Registration Blacklist
-Plugin URI: 
+Plugin URI: https://wordpress.org/plugins/jp-user-registration-blacklist
 Description: Apply comment IP and e-mail address blacklist rules to user registrations.  Puts user's IP in user's website field.  Solve a simple math problem to register.
 Author: Justin Parr
-Version: 1.4
+Version: 1.5.1
 Author URI: http://justinparrtech.com
 */
 
+// **************** SETTINGS INCLUDE *************************
+require_once basename( __FILE__,'.php').'_Settings.php';
+
+
+// **************** READ SETTINGS ****************************
+$JPURB_Opts=get_option(JPURB_option_name(), JPURB_default_all() );
+
+
+// **************** SEED FOR MATH PROBLEM ************************
 function JP_seed () {
-	return 302;
+	global $JPURB_Opts;
+
+	return $JPURB_Opts['seed'];
 }
 
 // *************** ADD A MATH PROBLEM TO THE USER REG FORM ***************
 add_action('register_form','JP_verifyMath_register_form');
 function JP_verifyMath_register_form (){
+	global $JPURB_Opts;
+
 	$a=mt_rand(1,10);
 	$b=mt_rand(1,10);
 	$c=$a+$b+JP_seed();
+	$f=$JPURB_Opts['MathProblemFieldName'];
 	?>
 	<p>
-	<label for="mathproblem">Solve: <?php echo("$a+$b "); ?><br />
-	<input type="text" name="mathproblem" id="mathproblem" class="input" value="<?php echo(mt_rand(1,10)); ?>" size="25" /></label>
+	<label for="<?php echo("$f"); ?>">Solve: <?php echo("$a+$b "); ?><br />
+	<input type="text" name="<?php echo("$f"); ?>" id="<?php echo("$f"); ?>" class="input" value="<?php echo(mt_rand(1,10)); ?>" size="25" /></label>
 	<input type="hidden" name="JPREG" value="<?php echo("$c"); ?>" />
 	</p>
 	<?php
@@ -34,8 +48,14 @@ function JP_verifyMath_register_form (){
 // **************** PREVENT REGISTRATION IF USER FAILS MATH PROBLEM *************
 add_filter('registration_errors', 'JP_verifyMath_registration_errors', 10, 3);
 function JP_verifyMath_registration_errors ($errors, $sanitized_user_login, $user_email) {
-	if ( $_POST['mathproblem']!=($_POST['JPREG']-JP_seed()) )
-	$errors->add( 'first_name_error', __('You suck at math!  Please try again.','mydomain') );
+	global $JPURB_Opts;
+
+	$f=$JPURB_Opts['MathProblemFieldName'];
+	$m=$JPURB_Opts['MathReject'];
+
+	if ( $_POST[$f]!=($_POST['JPREG']-JP_seed()) )
+		$errors->add( 'first_name_error', __($m,'mydomain') );
+
 	return $errors;
 }
 
@@ -43,8 +63,13 @@ function JP_verifyMath_registration_errors ($errors, $sanitized_user_login, $use
 // **************** PREVENT REGISTRATION IF USER IP IN BLACKLIST *************
 add_filter('registration_errors', 'JP_verifyIP_registration_errors', 10, 3);
 function JP_verifyIP_registration_errors ($errors, $sanitized_user_login, $user_email) {
+	global $JPURB_Opts;
+
+	$m=$JPURB_Opts['ACLReject'];
+
 	if ( wp_blacklist_check('', $user_email, '', '', $_SERVER['REMOTE_ADDR'], '') )
-	$errors->add( 'first_name_error', __('There was a technical problem.  Please try again.','mydomain') );
+		$errors->add( 'first_name_error', __($m,'mydomain') );
+
 	return $errors;
 }
 
@@ -56,5 +81,23 @@ function JP_addIP_user_register ($user_id) {
 }
 
 
+// *************** ADD SETTINGS LINK TO PLUGINS PAGE **************
+$plugin = plugin_basename(__FILE__); 
+if ( is_admin() )
+	add_filter("plugin_action_links_$plugin", 'JPURB_SettingsLink' );
+
+
+// ************* INSTANTIATE SETTINGS PAGE ******************
+if( is_admin() )
+	$my_settings_page = new JPUserRegToolsSettingsPage();
+
+
+// ************* ACTIVATION HOOK ******************
+function JPURB_activate() {
+	$JPURB_Opts=get_option(JPURB_option_name(), JPURB_default_all() );
+
+	update_option(JPURB_option_name(),$JPURB_Opts);
+}
+register_activation_hook( __FILE__, 'JPURB_activate' );
 
 ?>
