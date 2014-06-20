@@ -92,6 +92,9 @@ That's a WordPress thing.  Ignore the http://.  I may decide to add a custom fie
 2. This is what the user sees if registration fails.  Note that the red text in the upper-left is NOT displayed
 3. Once successfully registered, the user's IP address appears in the website field.  Note that the red text is NOT displayed.
 4. Admin options screen
+5. Spammer, caught live!
+6. I don't think "Takesha Kessler" lives in Romania
+7. BLOCK the whole network
 
 == Changelog ==
 
