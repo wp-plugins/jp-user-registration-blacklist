@@ -12,6 +12,9 @@ Prevent User Registration Spam, and Track New User IP address
 
 == Description ==
 
+## UPDATE: ##
+Spammer, caught live!  See screen shots!
+
 ## Features: ##
 
 * Prevent users from registering, if their IP or e-mail address is listed in the "Comments" blacklist (Settings..Discussion)
