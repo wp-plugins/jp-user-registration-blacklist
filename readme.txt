@@ -12,10 +12,10 @@ Prevent User Registration Spam, and Track New User IP address
 
 == Description ==
 
-## UPDATE: ##
-Spammer, caught live!  See screen shots!
+### UPDATE, 6/19/2014: ###
+Spammer, caught live!  See screen shots 1-3!
 
-## Features: ##
+### Features: ###
 
 * Prevent users from registering, if their IP or e-mail address is listed in the "Comments" blacklist (Settings..Discussion)
 * Users must solve a simple math problem (Add two one-digit numbers).
@@ -24,7 +24,7 @@ Spammer, caught live!  See screen shots!
 This is a super-simple user registration spam countermeasure.  I searched for a plugin that was SIMPLE and EFFECTIVE.  I looked at quite a few plugins that promised the desired effect, but were either cumbersome, or included too many unneeded or unwanted features.  Likewise, there are some very simple plugins that are less-than-effective.
 
 
-## This plugin is VERY simple: ##
+### This plugin is VERY simple: ###
 
 If the user's IP or e-mail address is listed in the "Discussion" comments blacklist, it prevents the user from registering.  This functionality should really be built in to WordPress, so, you're welcome.
 
@@ -39,13 +39,13 @@ Update: 6/5/2014 - Still no user reg spam!
 
 == Installation ==
 
-## Installation: ##
+### Installation: ###
 
 1. Upload `JPUserRegTools.php` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in the WordPress Dashboard.  Click "Activate" underneath "JP User Registration Blacklist".
 1. Add full or partial IP addresses or e-mail addresses to the Settings..Discussion `Comments Blacklist`, one per line.
 
-## Example: ##
+### Example: ###
 
 Adding 176.24. to the comments blacklist blocks:
 
@@ -91,13 +91,13 @@ That's a WordPress thing.  Ignore the http://.  I may decide to add a custom fie
 
 == Screenshots ==
 
-1. This is what the user sees during registration.  Note the math problem in line 3.
-2. This is what the user sees if registration fails.  Note that the red text in the upper-left is NOT displayed
-3. Once successfully registered, the user's IP address appears in the website field.  Note that the red text is NOT displayed.
-4. Admin options screen
-5. Spammer, caught live!
-6. I don't think "Takesha Kessler" lives in Romania
-7. BLOCK the whole network
+1. #6/19/2014: Spammer, caught live!#
+2. #I don't think "Tanesha Kessler" lives in Romania#
+3. #BLOCK the whole network#
+4. This is what the user sees during registration.  Note the math problem in line 3.
+5. This is what the user sees if registration fails.  Note that the red text in the upper-left is NOT displayed
+6. Once successfully registered, the user's IP address appears in the website field.  Note that the red text is NOT displayed.
+7. Admin options screen
 
 == Changelog ==
 
@@ -124,7 +124,7 @@ Upgrade, to get:
 
 == Configuration ==
 
-## To Configure the Plugin: ##
+### To Configure the Plugin: ###
 
 NOTE:  NO CONFIGURATION IS REQUIRED.  This plugin is fully-functional using the default values.
 
@@ -139,7 +139,7 @@ In the Plugins page, click "Settings" underneath the "JP User Registration Black
 * Form field name for math problem:  This field name contains the user's answer to the math problem.  Periodically change this, to keep the bots away.  The initial value is randomly-generated.
 
 
-## To Block an IP address ##
+### To Block an IP address ###
 1.  In the WordPress Dashboard, go to "Settings...Discuss"
 1.  To block all or part of an IP address, add it on its own line to "Comments Blacklist"
 1.  To block all or part of an e-mail address, add it on its own line to "Comments Blacklist"
