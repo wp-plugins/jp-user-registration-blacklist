@@ -3,7 +3,7 @@ Contributors: 5x5m2bswv2
 Donate link: 
 Tags: user registration, spam
 Requires at least: 3.0.1
-Tested up to: 3.9
+Tested up to: 3.9.2
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -28,7 +28,7 @@ This is a super-simple user registration spam countermeasure.  I searched for a 
 
 If the user's IP or e-mail address is listed in the "Discussion" comments blacklist, it prevents the user from registering.  This functionality should really be built in to WordPress, so, you're welcome.
 
-When the user registers, they are presented with a simple math problem.  As of plugin version 1.4, the math problem is dynamic!  99% of the "user reg spam" is based on bots being able to attack the basic WordPress registration form.  By adding even a simple math problem, most bots will fail, removing your site as a target of opportunity.  Criminals go after what's easy - if you make it slightly more difficult for them, they will go after someone else.
+When the user registers, they are presented with a simple math problem - adding a 3-digit number to a 1-digit number.  99% of the "user reg spam" is based on bots being able to attack the basic WordPress registration form.  By adding even a simple math problem, most bots will fail, removing your site as a target of opportunity.  Criminals go after what's easy - if you make it slightly more difficult for them, they will go after someone else.
 
 Finally, knowing the location from where your users register allows you to more effectively evaluate and block the source.  This plugin adds the user's IP address (at the time of registration)  to the "Website" field.
 
@@ -36,6 +36,7 @@ Go to http://whois.arin.net to find out who they are.  If you decide to block th
 
 I HAVE HAD ZERO USER REG SPAM ON MY OWN SITE SINCE INSTALLING THIS PLUGIN.
 Update: 6/5/2014 - Still no user reg spam!
+Update: 8/29/2014 - I have had an uptick in registration spam - about 2 per week, all from hosting sites.  I think the spammers have started using more sophisticated bots, so I have increased the complexity of the math problem in this version (1.6).
 
 == Installation ==
 
@@ -44,6 +45,7 @@ Update: 6/5/2014 - Still no user reg spam!
 1. Upload `JPUserRegTools.php` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in the WordPress Dashboard.  Click "Activate" underneath "JP User Registration Blacklist".
 1. Add full or partial IP addresses or e-mail addresses to the Settings..Discussion `Comments Blacklist`, one per line.
+1. NOTE:  This plugin works with the default settings.  No configuration is required.  Customize settings by clicking the "Settings" link underneath "JP User Registration Blacklist" plugin, on the Plugins page.
 
 ### Example: ###
 
@@ -76,7 +78,7 @@ Adding .pl to the commets blacklist blocks:
 
 = How do I configure this plugin? =
 
-Currently, there are no configuration options available, and I have not yet built an admin screen.
+From the dashboard, select "Plugins".  Underneath "JP User Registration Blacklist", click "Settings".
 
 = What does the user see? =
 
@@ -101,6 +103,9 @@ That's a WordPress thing.  Ignore the http://.  I may decide to add a custom fie
 
 == Changelog ==
 
+= 1.6 =
+* 8/29/2014 - Updated math problem to be slightly more complex - 3digit + 1digit (previously 1digit + 1digit).  I have seen a slight uptick in registrations from hosted server locations, leading me to think that there are bots out there that look for, and solve the 1digit+1digit math problem.
+
 = 1.5 =
 * 6/12/2014 - Randomly-generated seed for the math problem (prevents hacking), Randomly-generated math problem field name (further prevents bots), Admin options panel, ability to customize error messages.
 
@@ -115,12 +120,9 @@ That's a WordPress thing.  Ignore the http://.  I may decide to add a custom fie
 
 == Upgrade Notice ==
 
-= 1.5 =
+= 1.6 =
 Upgrade, to get:
-* Randomly-generated seed for the math problem (prevents hacking)
-* Randomly-generated math problem field name (prevents bots and automation)
-* Admin options panel
-* Configurable error messages
+* Slightly more complex math problem (3digit + 1digit)
 
 == Configuration ==
 

@@ -1,14 +1,14 @@
 <?php
 /**
  * @package JPUserRegistrationBlacklist
- * @version 1.5.1
+ * @version 1.6
  */
 /*
 Plugin Name: JP User Registration Blacklist
 Plugin URI: https://wordpress.org/plugins/jp-user-registration-blacklist
 Description: Apply comment IP and e-mail address blacklist rules to user registrations.  Puts user's IP in user's website field.  Solve a simple math problem to register.
 Author: Justin Parr
-Version: 1.5.1
+Version: 1.6
 Author URI: http://justinparrtech.com
 */
 
@@ -32,13 +32,14 @@ add_action('register_form','JP_verifyMath_register_form');
 function JP_verifyMath_register_form (){
 	global $JPURB_Opts;
 
-	$a=mt_rand(1,10);
+	//$a=mt_rand(1,10);
+	$a=mt_rand(101,900);
 	$b=mt_rand(1,10);
 	$c=$a+$b+JP_seed();
 	$f=$JPURB_Opts['MathProblemFieldName'];
 	?>
 	<p>
-	<label for="<?php echo("$f"); ?>">Solve: <?php echo("$a+$b "); ?><br />
+	<label for="<?php echo("$f"); ?>">Solve: <?php echo("Add $a and $b "); ?><br />
 	<input type="text" name="<?php echo("$f"); ?>" id="<?php echo("$f"); ?>" class="input" value="<?php echo(mt_rand(1,10)); ?>" size="25" /></label>
 	<input type="hidden" name="JPREG" value="<?php echo("$c"); ?>" />
 	</p>
