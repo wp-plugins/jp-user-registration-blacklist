@@ -1,14 +1,14 @@
 <?php
 /**
  * @package JPUserRegistrationBlacklist
- * @version 1.6
+ * @version 1.6.1
  */
 /*
 Plugin Name: JP User Registration Blacklist
 Plugin URI: https://wordpress.org/plugins/jp-user-registration-blacklist
 Description: Apply comment IP and e-mail address blacklist rules to user registrations.  Puts user's IP in user's website field.  Solve a simple math problem to register.
 Author: Justin Parr
-Version: 1.6
+Version: 1.6.1
 Author URI: http://justinparrtech.com
 */
 

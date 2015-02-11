@@ -1,9 +1,9 @@
 === Plugin Name ===
 Contributors: 5x5m2bswv2
 Donate link: 
-Tags: user registration, spam
+Tags: user registration, spam, blacklist
 Requires at least: 3.0.1
-Tested up to: 4.0
+Tested up to: 4.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -73,6 +73,64 @@ Adding .pl to the commets blacklist blocks:
 * anyone@anydomain.pl
 * Someone@somedomain.pl
 * Etc...
+
+### Blacklist ###
+Starting with 1.6.1, I will be providing regular updates for blacklisted IP addresses and networks that I've accumulated.
+
+Copy the entries below to the *Settings* ... *Discussions* ... *Comment Blacklist* section, scroll down, and click *Save*
+
+5.165.
+14.102.109.
+31.132.4.
+37.59.
+50.2.
+50.3.
+59.174.
+66.118.157.
+83.143.242.
+93.89.196.
+93.89.203.
+108.179.224.146
+109.200.20.
+110.89.
+113.196.
+117.26.
+117.174.
+117.211.
+142.0.38.
+142.4.211.
+162.244.11.
+167.160.103.
+167.160.104.
+167.160.105.
+167.160.106.
+167.160.107.
+167.160.108.
+167.160.109.
+167.160.110.
+167.160.111.
+167.160.112.
+167.160.113.
+167.160.114.
+167.160.115.
+173.213.97.
+178.162.209.
+183.11.
+183.207.
+185.24.
+188.68.24.
+188.68.25.
+188.240.
+190.151.
+191.101.243.
+192.3.49.
+192.99.
+192.230.61.
+195.154.166.
+198.50.136.
+202.69.
+202.99.172.
+
 
 == Frequently Asked Questions ==
 
