@@ -1,7 +1,7 @@
 <?php
 /**
  * @package JPUserRegistrationBlacklist
- * @version 1.6
+ * @version 1.6.1
  */
 /*
 Plugin Name: JP User Registration Blacklist
