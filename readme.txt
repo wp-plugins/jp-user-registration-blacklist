@@ -231,6 +231,9 @@ That's a WordPress thing.  Ignore the http://.  I may decide to add a custom fie
 
 == Changelog ==
 
+= 1.7 =
+* 5/2015 - Added E-mail registration token
+
 = 1.6 =
 * 8/29/2014 - Updated math problem to be slightly more complex - 3digit + 1digit (previously 1digit + 1digit).  I have seen a slight uptick in registrations from hosted server locations, leading me to think that there are bots out there that look for, and solve the 1digit+1digit math problem.
 
