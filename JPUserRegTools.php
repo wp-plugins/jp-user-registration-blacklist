@@ -1,14 +1,14 @@
 <?php
 /**
  * @package JPUserRegistrationBlacklist
- * @version 1.6.1
+ * @version 1.7
  */
 /*
 Plugin Name: JP User Registration Blacklist
 Plugin URI: https://wordpress.org/plugins/jp-user-registration-blacklist
 Description: Apply comment IP and e-mail address blacklist rules to user registrations.  Puts user's IP in user's website field.  Solve a simple math problem to register.
 Author: Justin Parr
-Version: 1.6.1
+Version: 1.7
 Author URI: http://justinparrtech.com
 */
 
@@ -56,6 +56,54 @@ function JP_verifyMath_registration_errors ($errors, $sanitized_user_login, $use
 
 	if ( $_POST[$f]!=($_POST['JPREG']-JP_seed()) )
 		$errors->add( 'first_name_error', __($m,'mydomain') );
+
+	return $errors;
+}
+
+
+// *************** ADD EMAIL TOKEN TO REGISTRATION FORM ***************
+add_action('register_form','JP_verifyEmail_register_form');
+function JP_verifyEmail_register_form (){
+
+	if($_POST["TTT"]=="") {
+		$a=mt_rand(1,9);
+		for ($i=1;$i<8;$i++)
+			$a=$a.mt_rand(0,9);
+	}
+	else {
+		$a=$_POST["TTT"];
+		?>
+		<label for="TOKEN">Token (check your e-mail): <br />
+		<input type="text" name="TOKEN" id="TOKEN" class="input" value="" size="25" /></label>	
+		<?php
+	}
+	?>
+	<p>
+	<input type="hidden" name="TTT" value="<?php echo("$a"); ?>" />
+	</p>
+	<?php
+}
+
+
+// **************** CHECK TOKEN AND SEND E_MAIL *************
+add_filter('registration_errors', 'JP_verifyEmail_registration_errors', 10, 3);
+function JP_verifyEmail_registration_errors ($errors, $sanitized_user_login, $user_email) {
+	$u=get_bloginfo('url');
+	$b=get_bloginfo();
+	$h=array("content-type: text/html");
+	$s='['.$b.'] User Activation Token';
+	$m='Thanks for registering with us!<BR><BR>';
+	$m=$m.'Here is your token: <B>'.substr($_POST["TTT"],2,4).'</B><BR><BR>';
+	$m=$m.'Enter this in the "Token" field, and click REGISTER.<BR><BR>';
+	$m=$m.'If you did NOT sign up for '.$b.', <BR>IMMEDIATELY CHANGE YOUR E-MAIL PASSWORD<BR>';
+	$m=$m.'<A HREF="'.$u.'">'.$u.'</A>';
+
+	
+	if($errors->get_error_code() == '')
+		if(substr($_POST["TTT"],2,4)!=$_POST["TOKEN"]) {
+			wp_mail( $user_email, $s, $m, $h );
+			$errors->add( 'mail_auth_error', "An e-mail has been sent to $user_email. Check your e-mail for a token code, then enter the token code below. - " );
+		};
 
 	return $errors;
 }
