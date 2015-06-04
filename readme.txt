@@ -12,6 +12,11 @@ Prevent User Registration Spam, and Track New User IP address
 
 == Description ==
 
+### Update: 6/2015 ###
+Changed e-mail token and math problem confirmation logic.  Previously, everything happened all at once, and the user would get prompted mutliple times for the math problem.
+Now, the user must answer the math problem first, before the e-mail token is sent.  Once the math problem is correctly answered within the session, it isn't asked again.  The user must now enter the correct token, which results in successful registration.
+SPECIAL THANKS TO OLEG M. FOR HELPING ME IDENTIFY, FIX, AND TEST THE ERROR!!
+
 ### Update: 5/2015 ###
 Added E-mail confirmation token.  Prevents registration until user enters a token sent via e-mail.
 
@@ -29,9 +34,9 @@ This is a super-simple user registration spam countermeasure.  I searched for a 
 
 If the user's IP or e-mail address is listed in the "Discussion" comments blacklist, it prevents the user from registering.  This functionality should really be built in to WordPress, so, you're welcome.
 
-When the user clicks "Register", they are sent a 4 digit token via e-mail, and must enter that token to continue registration.
-
 When the user registers, they are presented with a simple math problem - adding a 3-digit number to a 1-digit number.  99% of the "user reg spam" is based on bots being able to attack the basic WordPress registration form.  By adding even a simple math problem, most bots will fail, removing your site as a target of opportunity.  Criminals go after what's easy - if you make it slightly more difficult for them, they will go after someone else.
+
+Once the user solves the math problem, they are sent a 4 digit token via e-mail, and must enter that token to continue registration.
 
 Finally, knowing the location from where your users register allows you to more effectively evaluate and block the source.  This plugin adds the user's IP address (at the time of registration)  to the "Website" field.
 
@@ -230,6 +235,9 @@ That's a WordPress thing.  Ignore the http://.  I may decide to add a custom fie
 7. Admin options screen
 
 == Changelog ==
+
+= 1.7.2 =
+* 6/2015 - Fixed the sequencing so that the user must FIRST solve the math problem correclty, THEN gets e-mailed and prompted for the token.
 
 = 1.7 =
 * 5/2015 - Added E-mail registration token
